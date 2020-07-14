@@ -47,9 +47,9 @@ iot_route=$(oc get routes --all-namespaces | grep consumer-app-iotdemo-app.apps 
 open http://${iot_route}
 
 ### open manuELA IoT dashboard route
-echo opening manuELA IoT dashboard route
-manuela_route=$(oc get routes --all-namespaces | grep line-dashboard-manuela- | awk '{ print $3 }')
-open http://${manuela_route}
+#echo opening manuELA IoT dashboard route
+#manuela_route=$(oc get routes --all-namespaces | grep line-dashboard-manuela- | awk '{ print $3 }')
+#open http://${manuela_route}
 
 ### end
 echo
