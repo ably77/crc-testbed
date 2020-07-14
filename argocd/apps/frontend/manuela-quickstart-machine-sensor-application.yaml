@@ -3,6 +3,9 @@ kind: Application
 metadata:
   name: manuela-quickstart-machine-sensor
   namespace: argocd
+  # skip this resource
+  annotations:
+    argocd.argoproj.io/hook: Skip
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
