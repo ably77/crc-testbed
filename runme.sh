@@ -16,7 +16,7 @@ sleep 5
 
 ### deploy operators in argocd
 echo deploying operators
-oc create -f https://raw.githubusercontent.com/ably77/openshift-testbed/master/argocd/apps/meta/meta-operators.yaml
+oc create -f https://raw.githubusercontent.com/ably77/crc-testbed/master/argocd/apps/meta/meta-operators.yaml
 
 ### check kafka operator deployment status
 echo waiting for kafka deployment to complete
@@ -26,10 +26,9 @@ echo waiting for kafka deployment to complete
 echo checking grafana deployment status before deploying applications
 ./extras/waitfor-pod -t 10 openshift-pipelines-operator
 
-
 ### deploy backend services in argocd
 echo deploying backend app services
-oc create -f https://raw.githubusercontent.com/ably77/openshift-testbed/master/argocd/apps/meta/meta-backend-apps.yaml
+oc create -f https://raw.githubusercontent.com/ably77/crc-testbed/master/argocd/apps/meta/meta-backend-apps.yaml
 
 ### check kafka deployment status
 echo waiting for kafka deployment to complete
@@ -37,7 +36,7 @@ echo waiting for kafka deployment to complete
 
 ### deploy frontend apps in argocd
 echo deploying frontend apps
-oc create -f https://raw.githubusercontent.com/ably77/openshift-testbed/master/argocd/apps/meta/meta-frontend-apps.yaml
+oc create -f https://raw.githubusercontent.com/ably77/crc-testbed/master/argocd/apps/meta/meta-frontend-apps.yaml
 
 ### Wait for IoT Demo
 ./extras/waitfor-pod -t 10 consumer-app
