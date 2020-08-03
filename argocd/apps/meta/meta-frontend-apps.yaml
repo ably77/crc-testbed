@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: openshift-testbed-frontend-apps
+  name: meta-frontend-apps
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
   project: main
   source:
-    repoURL: https://github.com/ably77/crc-testbed
+    repoURL: https://github.com/ably77/openshift-testbed
     targetRevision: HEAD
     path: argocd/apps/frontend
   destination:

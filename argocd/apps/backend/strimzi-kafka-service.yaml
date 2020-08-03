@@ -10,10 +10,10 @@ spec:
   source:
     repoURL: https://github.com/ably77/openshift-testbed-apps
     targetRevision: HEAD
-    path: strimzi-kafka/cr/singlenode
+    path: kustomize/providers/overlays/crc/backend/strimzi-kafka-service
   destination:
     server: https://kubernetes.default.svc
-    namespace: myproject
+    namespace: myproject-crc
   syncPolicy:
     automated:
       prune: true # Specifies if resources should be pruned during auto-syncing ( false by default ).

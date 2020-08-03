@@ -8,7 +8,7 @@ metadata:
 spec:
   project: main
   source:
-    repoURL: https://github.com/ably77/crc-testbed
+    repoURL: https://github.com/ably77/openshift-testbed
     targetRevision: HEAD
     path: argocd/apps/backend
   destination:
