@@ -16,26 +16,11 @@ fi
 echo now deploying argoCD
 
 # create argocd operator
-oc create -f argocd/deploy/argocd-operator.yaml
+echo now deploying argoCD
+until oc apply -k https://github.com/ably77/openshift-testbed-apps/kustomize/instances/overlays/operators/namespaced-operators/argocd-operator; do sleep 2; done
 
-# wait for operator deployment
-./extras/waitfor-pod -n argocd -t 10 argocd-operator
-
-# create argocd cluster
-oc create -f argocd/deploy/argocd-cluster.yaml
-
-# wait for cluster deployment
-./extras/waitfor-pod -n argocd -t 10 argocd-application-controller
-
-# sleep for 45 seconds
-echo "sleeping for 45 seconds for argocd to finish installing"
-sleep 45
-
-# Add argocd main project
-oc create -f argocd/deploy/main-project.yaml
-
-# add argocd repos
-./argocd/deploy/add_repos.sh
+# wait for argo cluster rollout
+./extras/wait-for-rollout.sh deployment argocd-server argocd 10
 
 ### Open argocd route
 argocd_route=$(oc get routes --all-namespaces | grep argocd-server-argocd.apps. | awk '{ print $3 }')
